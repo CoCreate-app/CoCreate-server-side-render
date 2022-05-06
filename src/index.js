@@ -1,5 +1,5 @@
 const { parse } = require("node-html-parser");
-const { ObjectID } = require('mongodb');
+const { ObjectId } = require('mongodb');
 
 const renderedIgnoreEl = { INPUT: true, TEXTAREA: true, SELECT: true, LINK: true, IFRAME: true, "COCREATE-SELECT": true };
 
@@ -45,7 +45,7 @@ module.exports = async function renderHtml(orgDB, html) {
                 record = dbCache.get(cacheKey)
             else {
                 let collection = orgDB.collection(coll)
-                record = await collection.findOne({"_id": new ObjectID(id)});
+                record = await collection.findOne({"_id": new ObjectId(id)});
                 dbCache.set(cacheKey, record)
             }
 

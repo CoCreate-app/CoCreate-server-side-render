@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.0.0...v1.0.1) (2022-05-06)
+
+
+### Bug Fixes
+
+* replace ObjectID with ObjectId due to mongodb depreciation ([7bde07f](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/7bde07fe86d4aacfdc642cf3f2416b29d4baecf3))
+* update config organization_Id to organization_id ([2d73097](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/2d7309784ae2dc8dbe1e745e9b439708dc6e7494))
+
 # 1.0.0 (2022-03-03)
 
 

@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.0.1...v1.1.0) (2022-05-14)
+
+
+### Features
+
+* function readDocumentList has been renamed to readDocuments ([192e0f7](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/192e0f719211030eead12ae9f84ee12c2a182966))
+
 ## [1.0.1](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.0.0...v1.0.1) (2022-05-06)
 
 

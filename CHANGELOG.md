@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.1.0...v1.1.1) (2022-07-25)
+
+
+### Bug Fixes
+
+* replaced attribute pass-fetch_value with pass-filter-value ([7bf4963](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/7bf4963ea04ef0effc6ba4f1380b10b84a763135))
+
 # [1.1.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.0.1...v1.1.0) (2022-05-14)
 
 

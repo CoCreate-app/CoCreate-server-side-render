@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.1.3...v1.1.4) (2022-10-01)
+
+
+### Bug Fixes
+
+* bump [@cocreate](https://github.com/cocreate) dependencies ([2747458](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/2747458472da1a96c6bd38adfbfcd45adf81bbd5))
+
 ## [1.1.3](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.1.2...v1.1.3) (2022-10-01)
 
 

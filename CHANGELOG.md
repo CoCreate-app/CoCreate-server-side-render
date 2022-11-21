@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.1.7...v1.1.8) (2022-11-21)
+
+
+### Bug Fixes
+
+* replaced document_id with document._id ([c548a1d](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/c548a1d40a9229fb7b3db238e69fd16aab4e0827))
+
 ## [1.1.7](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.1.6...v1.1.7) (2022-11-21)
 
 

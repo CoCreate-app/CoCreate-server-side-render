@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.1.9...v1.1.10) (2022-11-22)
+
+
+### Bug Fixes
+
+* apply src: {{source}} to CoCreate.config ([ca8ebc1](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/ca8ebc1965a49b558650790c793c6ff2d3e4b260))
+
 ## [1.1.9](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.1.8...v1.1.9) (2022-11-21)
 
 

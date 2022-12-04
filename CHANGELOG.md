@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.1.20...v1.2.0) (2022-12-04)
+
+
+### Features
+
+* replace mongodb with @cocreate/crud-server ([684c835](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/684c8357e59bf7622367bc8e10c7f2388b60a87c))
+
 ## [1.1.20](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.1.19...v1.1.20) (2022-12-02)
 
 

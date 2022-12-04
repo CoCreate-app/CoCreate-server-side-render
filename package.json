@@ -63,7 +63,6 @@
   "dependencies": {
     "@cocreate/docs": "^1.4.11",
     "@cocreate/hosting": "^1.6.9",
-    "mongodb": "^4.4.0",
     "node-html-parser": "^5.2.0"
   }
 }

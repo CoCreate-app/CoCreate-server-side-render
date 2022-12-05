@@ -18,7 +18,7 @@ class CoCreateServerSideRender {
                 )) {
                 let meta = el.attributes;
     
-                if (renderedIgnoreEl[el.tagName])
+                if (this.renderedIgnoreEl[el.tagName])
                     continue;
                     
                 if (el.tagName == "DIV" && !el.classList.contains('domEditor'))

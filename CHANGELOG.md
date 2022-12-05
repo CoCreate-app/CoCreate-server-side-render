@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.5...v1.2.6) (2022-12-05)
+
+
+### Bug Fixes
+
+* issue accessing crud ([4c55e21](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/4c55e21af0cda561c52629c23ce4c41c23e30660))
+
 ## [1.2.5](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.4...v1.2.5) (2022-12-05)
 
 

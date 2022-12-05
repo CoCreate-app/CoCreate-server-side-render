@@ -6,6 +6,7 @@ class CoCreateServerSideRender {
 	}
 
     async HTML(html, organization_id) {
+        const self = this
 		let ignoreElement = { INPUT: true, TEXTAREA: true, SELECT: true, LINK: true, IFRAME: true, "COCREATE-SELECT": true }
 
         let dep = [];
@@ -47,7 +48,7 @@ class CoCreateServerSideRender {
                 if (dbCache.has(cacheKey))
                     record = dbCache.get(cacheKey)
                 else {
-                    record = await this.crud.readDocument({
+                    record = await self.crud.readDocument({
                         collection,
                         document: {
                             _id

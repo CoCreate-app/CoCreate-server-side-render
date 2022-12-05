@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.3...v1.2.4) (2022-12-05)
+
+
+### Bug Fixes
+
+* workflow automation ([aad403d](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/aad403df165176c263eed9ab192123895859e004))
+
 ## [1.2.3](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.2...v1.2.3) (2022-12-05)
 
 

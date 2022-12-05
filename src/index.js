@@ -6,7 +6,7 @@ class CoCreateServerSideRender {
 		this.renderedIgnoreEl = { INPUT: true, TEXTAREA: true, SELECT: true, LINK: true, IFRAME: true, "COCREATE-SELECT": true }
 	}
 
-    async html(html) {
+    async HTML(html, organization_id) {
 
         let dep = [];
         let dbCache = new Map();
@@ -51,7 +51,8 @@ class CoCreateServerSideRender {
                         collection,
                         document: {
                             _id
-                        }
+                        },
+                        organization_id
                     });
                     record = record.document[0]
                     dbCache.set(cacheKey, record)
@@ -80,6 +81,9 @@ class CoCreateServerSideRender {
             return dom;
         }
         let result = (await render(html, 'root')).toString();
+        dep = [];
+        dbCache.clear();
+
         return result;
     }
 }

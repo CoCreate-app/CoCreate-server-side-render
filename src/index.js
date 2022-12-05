@@ -3,10 +3,10 @@ const { parse } = require("node-html-parser");
 class CoCreateServerSideRender {
 	constructor(crud) {
 		this.crud = crud;
-		this.renderedIgnoreEl = { INPUT: true, TEXTAREA: true, SELECT: true, LINK: true, IFRAME: true, "COCREATE-SELECT": true }
 	}
 
     async HTML(html, organization_id) {
+		let ignoreElement = { INPUT: true, TEXTAREA: true, SELECT: true, LINK: true, IFRAME: true, "COCREATE-SELECT": true }
 
         let dep = [];
         let dbCache = new Map();
@@ -18,7 +18,7 @@ class CoCreateServerSideRender {
                 )) {
                 let meta = el.attributes;
     
-                if (this.renderedIgnoreEl[el.tagName])
+                if (ignoreElement[el.tagName])
                     continue;
                     
                 if (el.tagName == "DIV" && !el.classList.contains('domEditor'))
@@ -80,11 +80,11 @@ class CoCreateServerSideRender {
     
             return dom;
         }
-        let result = (await render(html, 'root')).toString();
+        let result = await render(html, 'root');
         dep = [];
         dbCache.clear();
 
-        return result;
+        return result.toString();
     }
 }
 

@@ -55,8 +55,9 @@ class CoCreateServerSideRender {
                         },
                         organization_id
                     });
-                    record = record.document[0]
-                    console.log('server-side-render', record.document[0])
+                    if (record && record.document && record.document[0])
+                        record = record.document[0]
+                        console.log('server-side-render', record)
                     dbCache.set(cacheKey, record)
                 }
     

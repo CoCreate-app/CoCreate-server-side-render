@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.4...v1.2.5) (2022-12-05)
+
+
+### Bug Fixes
+
+* ignoreElement ([87e4036](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/87e40363c660398e2c99f9f2f3562422cc95ed8a))
+
 ## [1.2.4](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.3...v1.2.4) (2022-12-05)
 
 

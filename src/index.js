@@ -56,6 +56,7 @@ class CoCreateServerSideRender {
                         organization_id
                     });
                     record = record.document[0]
+                    console.log('server-side-render', record.document[0])
                     dbCache.set(cacheKey, record)
                 }
     
@@ -84,7 +85,7 @@ class CoCreateServerSideRender {
         let result = await render(html, 'root');
         dep = [];
         dbCache.clear();
-
+        console.log('render results',  result.toString())
         return result.toString();
     }
 }

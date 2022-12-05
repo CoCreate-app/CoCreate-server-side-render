@@ -1,3 +1,10 @@
+## [1.2.8](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.7...v1.2.8) (2022-12-05)
+
+
+### Bug Fixes
+
+* if condition document document[0] ([4bbcb1f](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/4bbcb1f001a86ce8d7a7a4cb6e60eb2a533fdcb9))
+
 ## [1.2.7](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.6...v1.2.7) (2022-12-05)
 
 

@@ -1,3 +1,10 @@
+## [1.2.10](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.9...v1.2.10) (2022-12-06)
+
+
+### Bug Fixes
+
+* removed testing console.logs ([c81d833](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/c81d8339b7f4c16fbc92c5d1d1d6a35c0f55bf33))
+
 ## [1.2.9](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.8...v1.2.9) (2022-12-05)
 
 

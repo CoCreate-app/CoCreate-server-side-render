@@ -38,7 +38,7 @@ class CoCreateServerSideRender {
                 if (!_id || !name || !collection) continue;
                 if (dep.includes(key))
                     throw new Error(
-                        `infinite loop: ${lastKey} ${_id} ${collection} ${name}  has been already rendered`
+                        `infinite loop: ${lastKey} ${collection} ${name} ${_id} has been already rendered`
                     );
                 else
                     dep.push(key)
@@ -67,7 +67,6 @@ class CoCreateServerSideRender {
                 }
                 let chunk = record[name];
                 if (!chunk) {
-    
                     dep.pop();
                     continue;
                 }

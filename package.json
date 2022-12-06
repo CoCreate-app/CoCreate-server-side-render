@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/server-side-render",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "description": "A simple server-side-render component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API.",
   "keywords": [
     "server-side-render",

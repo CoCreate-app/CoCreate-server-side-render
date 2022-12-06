@@ -1,3 +1,10 @@
+## [1.2.11](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.10...v1.2.11) (2022-12-06)
+
+
+### Bug Fixes
+
+* upate response message ([fbdddd0](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/fbdddd04d9c215ed15841ab85aeaf23008a13454))
+
 ## [1.2.10](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.9...v1.2.10) (2022-12-06)
 
 

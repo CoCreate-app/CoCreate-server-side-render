@@ -64,6 +64,6 @@
     "@cocreate/docs": "^1.4.15",
     "@cocreate/hosting": "^1.6.13",
     "@cocreate/utils": "^1.15.0",
-    "node-html-parser": "^5.2.0"
+    "node-html-parser": "^6.1.4"
   }
 }

@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.12...v1.3.0) (2022-12-08)
+
+
+### Features
+
+* @cocreate/util checkValue to check if attributes have templating brackets {{}} ([280bcb1](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/280bcb18c28e6e3595db2d241d373796258afff8))
+
 ## [1.2.12](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.2.11...v1.2.12) (2022-12-07)
 
 

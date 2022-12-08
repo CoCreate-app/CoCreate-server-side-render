@@ -1,4 +1,5 @@
 const { parse } = require("node-html-parser");
+const { checkValue } = require("@cocreate/utils");
 
 class CoCreateServerSideRender {
 	constructor(crud) {
@@ -36,6 +37,7 @@ class CoCreateServerSideRender {
                     name = meta['name'];
                 let key = _id + collection + name;
                 if (!_id || !name || !collection) continue;
+                if (!checkValue(_id) || !checkValue(name) || !checkValue(collection)) continue;
                 if (dep.includes(key))
                     throw new Error(
                         `infinite loop: ${lastKey} ${collection} ${name} ${_id} has been already rendered`

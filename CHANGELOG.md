@@ -1,3 +1,10 @@
+## [1.3.9](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.8...v1.3.9) (2022-12-13)
+
+
+### Bug Fixes
+
+* removed un used devDependencies ([bbc06ae](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/bbc06ae66408a5f3f9aa79a1f990395651078931))
+
 ## [1.3.8](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.7...v1.3.8) (2022-12-13)
 
 

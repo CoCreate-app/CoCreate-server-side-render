@@ -1,3 +1,10 @@
+## [1.3.18](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.17...v1.3.18) (2022-12-30)
+
+
+### Bug Fixes
+
+* update config sources to use template  braces with entry on src ([2a86916](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/2a869169e5c37123addfd308a28d9612410e2bc3))
+
 ## [1.3.17](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.16...v1.3.17) (2022-12-29)
 
 

@@ -1,3 +1,10 @@
+## [1.3.32](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.31...v1.3.32) (2023-04-11)
+
+
+### Bug Fixes
+
+* renamed domans to hosts ([0d631eb](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/0d631ebe1986ca0f79488b707c18ed605bd2fead))
+
 ## [1.3.31](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.30...v1.3.31) (2023-02-01)
 
 

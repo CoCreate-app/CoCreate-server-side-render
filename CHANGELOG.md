@@ -1,3 +1,10 @@
+## [1.3.33](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.32...v1.3.33) (2023-04-24)
+
+
+### Bug Fixes
+
+* removed uglify.js from dev dependencies ([5141c4d](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/5141c4d615341144998b6b101c917a78b4bdad9a))
+
 ## [1.3.32](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.31...v1.3.32) (2023-04-11)
 
 

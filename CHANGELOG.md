@@ -1,3 +1,10 @@
+## [1.3.34](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.33...v1.3.34) (2023-05-10)
+
+
+### Bug Fixes
+
+* apikey renamed to key ([d4e8b3d](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/d4e8b3d02c7128a2a528ec86b5e7af5928d5b8c6))
+
 ## [1.3.33](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.32...v1.3.33) (2023-04-24)
 
 

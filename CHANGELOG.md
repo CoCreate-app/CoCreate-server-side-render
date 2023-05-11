@@ -1,3 +1,10 @@
+## [1.3.35](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.34...v1.3.35) (2023-05-11)
+
+
+### Bug Fixes
+
+* replace key ([6ddb739](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/6ddb739d4d961c99dd2dc9166d9df4d424b53f10))
+
 ## [1.3.34](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.33...v1.3.34) (2023-05-10)
 
 

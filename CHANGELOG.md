@@ -1,3 +1,11 @@
+## [1.3.38](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.37...v1.3.38) (2023-06-04)
+
+
+### Bug Fixes
+
+* [@v3](https://github.com/v3) ([46049c4](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/46049c49ba3e70f794d6657e8afc088d66645fe7))
+* html formating ([a57f8c2](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/a57f8c248b38083b98ea2fb9918916ffbc517627))
+
 ## [1.3.37](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.36...v1.3.37) (2023-05-25)
 
 

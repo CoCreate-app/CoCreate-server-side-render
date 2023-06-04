@@ -1,3 +1,10 @@
+## [1.3.40](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.39...v1.3.40) (2023-06-04)
+
+
+### Bug Fixes
+
+* Refactor CoCreate.config.js to remove hard-coded credentials ([dd58732](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/dd58732d1de6c1834f5cbaddddd928b4bd7327fb))
+
 ## [1.3.39](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.38...v1.3.39) (2023-06-04)
 
 

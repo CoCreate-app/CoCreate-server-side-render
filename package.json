@@ -49,7 +49,7 @@
     "@cocreate/cli": "^1.29.3"
   },
   "dependencies": {
-    "@cocreate/docs": "^1.8.2",
+    "@cocreate/docs": "^1.8.13",
     "@cocreate/utils": "^1.21.3",
     "node-html-parser": "^6.1.4"
   }

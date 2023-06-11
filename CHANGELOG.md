@@ -1,3 +1,10 @@
+## [1.3.44](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.43...v1.3.44) (2023-06-11)
+
+
+### Bug Fixes
+
+* Update dependencies versions for [@cocreate](https://github.com/cocreate) libraries ([fb33703](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/fb337036d1c88d0d91a3219780c8d0bd2d752b61))
+
 ## [1.3.43](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.42...v1.3.43) (2023-06-11)
 
 

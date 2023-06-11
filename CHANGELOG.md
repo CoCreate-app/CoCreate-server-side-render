@@ -1,3 +1,10 @@
+## [1.3.50](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.49...v1.3.50) (2023-06-11)
+
+
+### Bug Fixes
+
+* testing workflow ([d6d2e1c](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/d6d2e1c7396865723609453c1b3bd04be0840746))
+
 ## [1.3.49](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.48...v1.3.49) (2023-06-11)
 
 

@@ -1,3 +1,10 @@
+## [1.3.46](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.45...v1.3.46) (2023-06-11)
+
+
+### Bug Fixes
+
+* postintall error ([f8a1ad9](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/f8a1ad9d8cb50f414837b5f9e651821e5c518611))
+
 ## [1.3.45](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.44...v1.3.45) (2023-06-11)
 
 

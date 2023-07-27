@@ -23,15 +23,17 @@ class CoCreateServerSideRender {
                 if (ignoreElement[el.tagName])
                     continue;
 
-                if (el.tagName == "DIV" && !el.classList.contains('domEditor'))
+                if (el.closest('.template, [template], template, [render]'))
                     continue;
 
-                if (el.classList.contains('domEditor') && el.closest('.template'))
+                if (el.hasAttribute('render-selector') || el.hasAttribute('render-closest') || el.hasAttribute('render-parent') || el.hasAttribute('render-next') || el.hasAttribute('render-next'))
+                    continue;
+
+                if (el.hasAttribute('component') || el.hasAttribute('plugin'))
                     continue;
 
                 if (el.hasAttribute('actions'))
                     continue;
-
                 let _id = meta["document_id"],
                     collection = meta['collection'],
                     name = meta['name'];

@@ -16,7 +16,7 @@ class CoCreateServerSideRender {
         async function render(html, lastKey) {
             const dom = parse(html);
             for (let el of dom.querySelectorAll(
-                "[collection][name][document_id]"
+                "[array][name][object]"
             )) {
                 let meta = el.attributes;
 
@@ -34,33 +34,34 @@ class CoCreateServerSideRender {
 
                 if (el.hasAttribute('actions'))
                     continue;
-                let _id = meta["document_id"],
-                    collection = meta['collection'],
+                let _id = meta["object"],
+                    array = meta['array'],
                     name = meta['name'];
-                let key = _id + collection + name;
-                if (!_id || !name || !collection) continue;
-                if (!checkValue(_id) || !checkValue(name) || !checkValue(collection)) continue;
+                let key = _id + array + name;
+                if (!_id || !name || !array) continue;
+                if (!checkValue(_id) || !checkValue(name) || !checkValue(array)) continue;
                 if (dep.includes(key))
                     throw new Error(
-                        `infinite loop: ${lastKey} ${collection} ${name} ${_id} has been already rendered`
+                        `infinite loop: ${lastKey} ${array} ${name} ${_id} has been already rendered`
                     );
                 else
                     dep.push(key)
 
-                let cacheKey = _id + collection;
+                let cacheKey = _id + array;
                 let record;
                 if (dbCache.has(cacheKey))
                     record = dbCache.get(cacheKey)
                 else {
-                    record = await self.crud.readDocument({
-                        collection,
-                        document: {
+                    record = await self.crud.send({
+                        method: 'read.object',
+                        array,
+                        object: {
                             _id
                         },
                         organization_id
                     });
-                    if (record && record.document && record.document[0])
-                        record = record.document[0]
+                    if (record && record.object && record.object[0])
+                        record = record.object[0]
 
                     dbCache.set(cacheKey, record)
                 }

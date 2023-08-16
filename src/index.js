@@ -48,11 +48,11 @@ class CoCreateServerSideRender {
                     dep.push(key)
 
                 let cacheKey = _id + array;
-                let record;
+                let data;
                 if (dbCache.has(cacheKey))
-                    record = dbCache.get(cacheKey)
+                    data = dbCache.get(cacheKey)
                 else {
-                    record = await self.crud.send({
+                    data = await self.crud.send({
                         method: 'read.object',
                         array,
                         object: {
@@ -60,17 +60,17 @@ class CoCreateServerSideRender {
                         },
                         organization_id
                     });
-                    if (record && record.object && record.object[0])
-                        record = record.object[0]
+                    if (data && data.object && data.object[0])
+                        data = data.object[0]
 
-                    dbCache.set(cacheKey, record)
+                    dbCache.set(cacheKey, data)
                 }
 
-                if (!record || !record[name]) {
+                if (!data || !data[name]) {
                     dep.pop();
                     continue;
                 }
-                let chunk = record[name];
+                let chunk = data[name];
                 if (!chunk) {
                     dep.pop();
                     continue;

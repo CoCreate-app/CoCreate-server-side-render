@@ -1,3 +1,18 @@
+# [1.4.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.54...v1.4.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* crud attributes renamed ([029f963](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/029f963ce7e4951da22d2eceaae3f056a16d5d6f))
+* Refactor SSR rendering logic in index.js ([5150fe8](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/5150fe8c3b4049b5b65c46689a7da6a19e95031b))
+* Refactored *-target to *-selector ([58865ac](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/58865ac647a87798df0f8bbf431c19aa637c3aff))
+* webpack.config and package.json make use of mode=production instead of process.env ([1ab8258](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/1ab825827fd6e2f0d9a33722d20be9f8e830e1ce))
+
+
+### Features
+
+* name attribute and variable renamed to key ([dc98ef7](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/dc98ef76b3d60bd187b1fcb72072f501d4124334))
+
 ## [1.3.54](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.3.53...v1.3.54) (2023-06-14)
 
 

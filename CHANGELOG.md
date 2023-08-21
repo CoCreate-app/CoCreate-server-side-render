@@ -1,3 +1,12 @@
+## [1.5.1](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.5.0...v1.5.1) (2023-08-21)
+
+
+### Bug Fixes
+
+* /dist/CoCreate.js updated to https://CoCreate.app/dist/CoCreate.js ([1bf159b](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/1bf159bcde36b5589b215e4a63a07de5d3aa7e35))
+* replace cdn with /dist ([5289e81](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/5289e81ae6ad5935a115eff39f796dde1c77917e))
+* update file uploader ([0c8334a](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/0c8334aa016e89b8b9b8cb30e4ada6e3b985fc59))
+
 # [1.5.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.4.0...v1.5.0) (2023-08-17)
 
 

@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.6.1...v1.6.2) (2023-08-21)
+
+
+### Bug Fixes
+
+* removed build as no webpack.config exist ([bb207b4](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/bb207b451dd485b4edfe61e96faf83c8b7d1730c))
+
 ## [1.6.1](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.6.0...v1.6.1) (2023-08-21)
 
 

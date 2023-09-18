@@ -1,3 +1,11 @@
+## [1.6.3](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.6.2...v1.6.3) (2023-09-18)
+
+
+### Bug Fixes
+
+*  Add path and pathname ([9456a9f](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/9456a9f837df81ba0fa8640f8fd19bb77904fdf0))
+* Update dCoCreate dpendencies to latest versions ([928cf3d](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/928cf3da9365466a97e27be5a8b920f4a77b4cbb))
+
 ## [1.6.2](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.6.1...v1.6.2) (2023-08-21)
 
 

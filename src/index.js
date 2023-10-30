@@ -53,7 +53,7 @@ class CoCreateServerSideRender {
                     data = dbCache.get(cacheKey)
                 else {
                     data = await self.crud.send({
-                        method: 'read.object',
+                        method: 'object.read',
                         array,
                         object: {
                             _id

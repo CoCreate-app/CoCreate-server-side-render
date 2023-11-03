@@ -1,3 +1,12 @@
+## [1.6.7](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.6.6...v1.6.7) (2023-11-03)
+
+
+### Bug Fixes
+
+* favicon.ico path ([b0cd0f3](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/b0cd0f3a81a0f2a972ca82f7117a53fb47bc7181))
+* update dependencies to the lates versions ([8940cf1](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/8940cf17ad7fad6ef8a02a4e73fbb0d49f5bb56a))
+* update method to use object.update etc ([6ea6ea2](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/6ea6ea24fe17fa1c083ad4a00422bf82b4d764e3))
+
 ## [1.6.6](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.6.5...v1.6.6) (2023-10-25)
 
 

@@ -1,3 +1,10 @@
+## [1.6.8](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.6.7...v1.6.8) (2023-11-09)
+
+
+### Bug Fixes
+
+* meta name typo ([0cf6cc2](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/0cf6cc2b4353036a5aba5e851c631aa6028a75c9))
+
 ## [1.6.7](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.6.6...v1.6.7) (2023-11-03)
 
 

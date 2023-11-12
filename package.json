@@ -45,7 +45,7 @@
   },
   "main": "./src/index.js",
   "dependencies": {
-    "@cocreate/utils": "^1.26.2",
+    "@cocreate/utils": "^1.27.1",
     "node-html-parser": "^6.1.4"
   }
 }

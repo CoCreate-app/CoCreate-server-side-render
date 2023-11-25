@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.8.0...v1.9.0) (2023-11-25)
+
+
+### Features
+
+* upgrade dependencies for latest features and fixes ([7c0e1a8](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/7c0e1a8e8f010d2ecf6bd2ace1f87f2288716047))
+
 # [1.8.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.7.0...v1.8.0) (2023-11-25)
 
 

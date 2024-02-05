@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.0...v1.10.1) (2024-02-05)
+
+
+### Bug Fixes
+
+* Removed https://cdn.cocreate.app/latest/CoCreate.min.css ([671b9d6](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/671b9d6d6547a862381632d6f1ed82039b195573))
+
 # [1.10.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.9.0...v1.10.0) (2024-01-08)
 
 

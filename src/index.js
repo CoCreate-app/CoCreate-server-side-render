@@ -13,10 +13,11 @@ class CoCreateServerSideRender {
         let dep = [];
         let dbCache = new Map();
 
+        // Does not support instanceof HTMLCollection
         async function render(html, lastKey) {
             const dom = parse(html);
             for (let el of dom.querySelectorAll(
-                "[array][name][object]"
+                "[array][key][object]"
             )) {
                 let meta = el.attributes;
 
@@ -36,16 +37,16 @@ class CoCreateServerSideRender {
                     continue;
                 let _id = meta["object"],
                     array = meta['array'],
-                    name = meta['name'];
-                let key = _id + array + name;
-                if (!_id || !name || !array) continue;
-                if (!checkValue(_id) || !checkValue(name) || !checkValue(array)) continue;
-                if (dep.includes(key))
+                    key = meta['key'];
+                let crudKey = _id + array + key;
+                if (!_id || !key || !array) continue;
+                if (!checkValue(_id) || !checkValue(key) || !checkValue(array)) continue;
+                if (dep.includes(crudKey))
                     throw new Error(
-                        `infinite loop: ${lastKey} ${array} ${name} ${_id} has been already rendered`
+                        `infinite loop: ${lastKey} ${array} ${key} ${_id} has been already rendered`
                     );
                 else
-                    dep.push(key)
+                    dep.push(crudKey)
 
                 let cacheKey = _id + array;
                 let data;
@@ -66,11 +67,11 @@ class CoCreateServerSideRender {
                     dbCache.set(cacheKey, data)
                 }
 
-                if (!data || !data[name]) {
+                if (!data || !data[key]) {
                     dep.pop();
                     continue;
                 }
-                let chunk = data[name];
+                let chunk = data[key];
                 if (!chunk) {
                     dep.pop();
                     continue;

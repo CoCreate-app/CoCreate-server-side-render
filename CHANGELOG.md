@@ -1,3 +1,11 @@
+## [1.10.2](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.1...v1.10.2) (2024-03-18)
+
+
+### Bug Fixes
+
+* handle key instead of name ([b28001e](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/b28001e22aded06127cbe69bc10c51a4a05735f8))
+* update node-html-parser ([51947c0](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/51947c04ccbca67be79a1f5c4d7419231b99169c))
+
 ## [1.10.1](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.0...v1.10.1) (2024-02-05)
 
 

@@ -1,3 +1,10 @@
+## [1.10.5](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.4...v1.10.5) (2024-06-23)
+
+
+### Bug Fixes
+
+* lock file ([f8550cc](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/f8550cc1bff91c5ce975b1449fd06a0f54bf37b2))
+
 ## [1.10.4](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.3...v1.10.4) (2024-06-23)
 
 

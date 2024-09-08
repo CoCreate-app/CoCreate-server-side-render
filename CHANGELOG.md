@@ -1,3 +1,10 @@
+## [1.10.7](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.6...v1.10.7) (2024-09-08)
+
+
+### Bug Fixes
+
+* render-previous ([c49a821](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/c49a8211801691abea0cf784acc6d23ae8eb67de))
+
 ## [1.10.6](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.5...v1.10.6) (2024-06-23)
 
 

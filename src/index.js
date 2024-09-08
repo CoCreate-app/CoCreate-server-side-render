@@ -27,7 +27,7 @@ class CoCreateServerSideRender {
                 if (el.closest('.template, [template], template, [render]'))
                     continue;
 
-                if (el.hasAttribute('render-selector') || el.hasAttribute('render-closest') || el.hasAttribute('render-parent') || el.hasAttribute('render-next') || el.hasAttribute('render-next'))
+                if (el.hasAttribute('render-selector') || el.hasAttribute('render-closest') || el.hasAttribute('render-parent') || el.hasAttribute('render-next') || el.hasAttribute('render-previous'))
                     continue;
 
                 if (el.hasAttribute('component') || el.hasAttribute('plugin'))
@@ -88,6 +88,7 @@ class CoCreateServerSideRender {
 
             return dom;
         }
+
         let result = await render(html, 'root');
         dep = [];
         dbCache.clear();

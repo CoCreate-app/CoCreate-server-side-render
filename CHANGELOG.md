@@ -1,3 +1,15 @@
+# [1.11.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.7...v1.11.0) (2024-11-04)
+
+
+### Bug Fixes
+
+* prettier.config options ([765ac1c](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/765ac1c5dd5e4e9f3ecf1b1e0152282cd7436517))
+
+
+### Features
+
+* add prettier.config.js and format files ([810c7f4](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/810c7f45467b1eab7087b5d8ca2085597642551a))
+
 ## [1.10.7](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.6...v1.10.7) (2024-09-08)
 
 

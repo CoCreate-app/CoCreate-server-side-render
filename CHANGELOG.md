@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.11.0...v1.12.0) (2024-12-22)
+
+
+### Features
+
+* render elements with attribute src ([eba6b44](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/eba6b44a764590a3d2ca6b224638d7be334fb322))
+
 # [1.11.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.10.7...v1.11.0) (2024-11-04)
 
 

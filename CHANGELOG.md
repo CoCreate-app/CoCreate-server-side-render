@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.0...v1.12.1) (2025-01-17)
+
+
+### Bug Fixes
+
+* temporarily remove src rendering ([f4a2b66](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/f4a2b66b88d975d65cb1a97a67c65c841327f1f6))
+
 # [1.12.0](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.11.0...v1.12.0) (2024-12-22)
 
 

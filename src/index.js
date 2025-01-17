@@ -98,53 +98,53 @@ class CoCreateServerSideRender {
 			}
 
 			// Handle elements with [src]
-			for (let el of dom.querySelectorAll(
-				"[src]:not(script, img, iframe, audio, video, source, track, input, embed, frame)"
-			)) {
-				let src = el.getAttribute("src");
-				if (!src) continue;
+			// for (let el of dom.querySelectorAll(
+			// 	"[src]:not(script, img, iframe, audio, video, source, track, input, embed, frame)"
+			// )) {
+			// 	let src = el.getAttribute("src");
+			// 	if (!src) continue;
 
-				// Construct actual pathname using src and the original URL
-				let basePath = new URL(url).pathname;
-				let resolvedPathname = new URL(
-					src,
-					`http://localhost${basePath}`
-				).pathname;
+			// 	// Construct actual pathname using src and the original URL
+			// 	let basePath = new URL(url).pathname;
+			// 	let resolvedPathname = new URL(
+			// 		src,
+			// 		`http://localhost${basePath}`
+			// 	).pathname;
 
-				if (resolvedPathname.endsWith("/")) {
-					resolvedPathname += "index.html";
-				}
-				let $filter = {
-					query: {
-						pathname: resolvedPathname
-					}
-				}; // Use filter to structure query
+			// 	if (resolvedPathname.endsWith("/")) {
+			// 		resolvedPathname += "index.html";
+			// 	}
+			// 	let $filter = {
+			// 		query: {
+			// 			pathname: resolvedPathname
+			// 		}
+			// 	}; // Use filter to structure query
 
-				let data = await self.crud.send({
-					method: "object.read",
-					array: "files",
-					object: "",
-					$filter,
-					organization_id
-				});
+			// 	let data = await self.crud.send({
+			// 		method: "object.read",
+			// 		array: "files",
+			// 		object: "",
+			// 		$filter,
+			// 		organization_id
+			// 	});
 
-				if (
-					data &&
-					data.object &&
-					data.object[0] &&
-					data.object[0].src
-				) {
-					let chunk = data.object[0].src;
-					let path = el.getAttribute("path");
-					if (path) chunk = chunk.replaceAll("{{path}}", path);
+			// 	if (
+			// 		data &&
+			// 		data.object &&
+			// 		data.object[0] &&
+			// 		data.object[0].src
+			// 	) {
+			// 		let chunk = data.object[0].src;
+			// 		let path = el.getAttribute("path");
+			// 		if (path) chunk = chunk.replaceAll("{{path}}", path);
 
-					chunk = await render(chunk);
+			// 		chunk = await render(chunk);
 
-					el.setAttribute("rendered", "");
-					el.innerHTML = "";
-					el.appendChild(chunk);
-				}
-			}
+			// 		el.setAttribute("rendered", "");
+			// 		el.innerHTML = "";
+			// 		el.appendChild(chunk);
+			// 	}
+			// }
 
 			return dom;
 		}

@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.1...v1.12.2) (2025-04-30)
+
+
+### Bug Fixes
+
+* webpack.config and devdependencies ([a76e936](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/a76e9362fdd5d2b4f1904532682b544395c86c3b))
+
 ## [1.12.1](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.0...v1.12.1) (2025-01-17)
 
 

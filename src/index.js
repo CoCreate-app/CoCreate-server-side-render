@@ -33,11 +33,7 @@ class CoCreateServerSideRender {
 					continue;
 
 				if (
-					el.hasAttribute("render-selector") ||
-					el.hasAttribute("render-closest") ||
-					el.hasAttribute("render-parent") ||
-					el.hasAttribute("render-next") ||
-					el.hasAttribute("render-previous")
+					el.hasAttribute("render-query") 
 				)
 					continue;
 

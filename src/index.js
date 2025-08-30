@@ -21,17 +21,6 @@ class CoCreateServerSideRender {
 		let dbCache = new Map();
 
 		async function render(dom, lastKey) {
-			let langLinks = self.createLanguageLinkTags(file);
-
-			// Insert language link tags into <head>
-			const head = dom.querySelector("head");
-			if (head && langLinks) {
-				const linksFragment = parse(`<fragment>${langLinks}</fragment>`);
-				for (const link of linksFragment.childNodes) {
-					head.appendChild(link);
-				}
-			}
-
 			// Handle elements with [array][key][object]
 			for (let el of dom.querySelectorAll("[array][key][object]")) {
 				let meta = el.attributes;
@@ -153,14 +142,22 @@ class CoCreateServerSideRender {
 
 		let dom = parse(file.src);
 		dom = await render(dom, "root");
-		dom = translate(dom, file);
-		let langLinkTags = createLanguageLinkTags(file);
-		langLinkTags = parse(langLinkTags);
-		langLinkTags = await render(langLinkTags, "root");
-
+		if (file.langRegion || file.lang) {
+			dom = translate(dom, file);
+			let langLinkTags = createLanguageLinkTags(file);
+			const head = dom.querySelector("head");
+			if (head && langLinkTags) {
+				const linksFragment = parse(
+					`<fragment>${langLinkTags}</fragment>`
+				);
+				for (const link of linksFragment.childNodes) {
+					head.appendChild(link);
+				}
+			}
+		}
 		dep = [];
 		dbCache.clear();
-		return result.toString();
+		return dom.toString();
 	}
 
 	createLanguageLinkTags(file) {
@@ -178,7 +175,7 @@ class CoCreateServerSideRender {
 		// Step 1: Create a lookup object that maps base language to its path.
 		// This is done once for efficiency.
 		const paths = {};
-		for (const p of file.pathnames) {
+		for (const p of file.pathname) {
 			const secondSlashIndex = p.indexOf("/", 1);
 			const langKey = p.substring(1, secondSlashIndex); // e.g., 'en', 'es', 'pt'
 			const restOfPath = p.substring(secondSlashIndex);

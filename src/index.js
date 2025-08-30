@@ -6,7 +6,7 @@ class CoCreateServerSideRender {
 		this.crud = crud;
 	}
 
-	async HTML(html, organization_id, url) {
+	async HTML(file) {
 		const self = this;
 		let ignoreElement = {
 			INPUT: true,
@@ -20,8 +20,17 @@ class CoCreateServerSideRender {
 		let dep = [];
 		let dbCache = new Map();
 
-		async function render(html, lastKey) {
-			const dom = parse(html);
+		async function render(dom, lastKey) {
+			let langLinks = self.createLanguageLinkTags(file);
+
+			// Insert language link tags into <head>
+			const head = dom.querySelector("head");
+			if (head && langLinks) {
+				const linksFragment = parse(`<fragment>${langLinks}</fragment>`);
+				for (const link of linksFragment.childNodes) {
+					head.appendChild(link);
+				}
+			}
 
 			// Handle elements with [array][key][object]
 			for (let el of dom.querySelectorAll("[array][key][object]")) {
@@ -32,10 +41,7 @@ class CoCreateServerSideRender {
 				if (el.closest(".template, [template], template, [render]"))
 					continue;
 
-				if (
-					el.hasAttribute("render-query") 
-				)
-					continue;
+				if (el.hasAttribute("render-query")) continue;
 
 				if (el.hasAttribute("component") || el.hasAttribute("plugin"))
 					continue;
@@ -145,10 +151,83 @@ class CoCreateServerSideRender {
 			return dom;
 		}
 
-		let result = await render(html, "root");
+		let dom = parse(file.src);
+		dom = await render(dom, "root");
+		dom = translate(dom, file);
+		let langLinkTags = createLanguageLinkTags(file);
+		langLinkTags = parse(langLinkTags);
+		langLinkTags = await render(langLinkTags, "root");
+
 		dep = [];
 		dbCache.clear();
 		return result.toString();
+	}
+
+	createLanguageLinkTags(file) {
+		let xDefault = file.path;
+
+		if (file.name !== "index.html") {
+			if (xDefault.endsWith("/")) {
+				xDefault += file.name;
+			} else {
+				xDefault += "/" + file.name;
+			}
+		}
+		let generatedLinksString = `<link rel="alternate" hreflang="x-default" href="${xDefault}">\n`;
+
+		// Step 1: Create a lookup object that maps base language to its path.
+		// This is done once for efficiency.
+		const paths = {};
+		for (const p of file.pathnames) {
+			const secondSlashIndex = p.indexOf("/", 1);
+			const langKey = p.substring(1, secondSlashIndex); // e.g., 'en', 'es', 'pt'
+			const restOfPath = p.substring(secondSlashIndex);
+			paths[langKey] = restOfPath;
+		}
+
+		// Step 2: Iterate through all supported languages and build the HTML string.
+		for (const language of file.languages) {
+			// Use the base language to find the correct path in our map
+			const path = paths[language] || paths[language.split("-")[0]];
+
+			// If a valid path exists, construct the full link
+			if (path) {
+				// Construct the full href URL using the full language code from the array
+				const hrefUrl = `https://${file.urlObject.hostname}/${language}${path}`;
+
+				// Append the HTML string. The hreflang and the URL path are now in sync.
+				generatedLinksString += `<link rel="alternate" hreflang="${language}" href="${hrefUrl}">\n`;
+			}
+		}
+		return generatedLinksString;
+	}
+
+	async translate(dom, file) {
+		let langRegion = file.langRegion;
+		let lang = file.lang;
+		if (file.translations & (langRegion || lang)) {
+			for (let translation of file.translations) {
+				let el = dom.querySelectorAll(translation.selector);
+				if (translation.innerHTML) {
+					let content =
+						translation.innerHTML[langRegion] ||
+						translation.innerHTML[lang];
+					if (content) {
+						el.innerHTML = content;
+					}
+				}
+				if (translation.attributes) {
+					for (let [key, language] of Object.entries(
+						translation.attributes
+					)) {
+						let value = language[langRegion] || language[lang];
+						if (value) {
+							el.setAttribute(key, value);
+						}
+					}
+				}
+			}
+		}
 	}
 }
 

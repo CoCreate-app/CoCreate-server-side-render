@@ -1,3 +1,12 @@
+## [1.12.4](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.3...v1.12.4) (2025-09-01)
+
+
+### Bug Fixes
+
+* optimize language link tag insertion in HTML rendering ([ac0580c](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/ac0580cd90da8a555fb1fb47412c1484ccc20a93))
+* refactor HTML method to accept file object and enhance language link generation ([b0d7a97](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/b0d7a97de5f3e3c46dc3bd42c62e79e3843ebb22))
+* streamline render attribute checks in CoCreateServerSideRender ([4407afb](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/4407afbcc218e7fa9af488e5a2bc5b2abf74d7bc))
+
 ## [1.12.3](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.2...v1.12.3) (2025-05-01)
 
 

@@ -143,8 +143,8 @@ class CoCreateServerSideRender {
 		let dom = parse(file.src);
 		dom = await render(dom, "root");
 		if (file.langRegion || file.lang) {
-			dom = translate(dom, file);
-			let langLinkTags = createLanguageLinkTags(file);
+			dom = await this.translate(dom, file);
+			let langLinkTags = this.createLanguageLinkTags(file);
 			const head = dom.querySelector("head");
 			if (head && langLinkTags) {
 				const linksFragment = parse(
@@ -202,29 +202,32 @@ class CoCreateServerSideRender {
 	async translate(dom, file) {
 		let langRegion = file.langRegion;
 		let lang = file.lang;
-		if (file.translations & (langRegion || lang)) {
+		if (file.translations && (langRegion || lang)) {
 			for (let translation of file.translations) {
-				let el = dom.querySelectorAll(translation.selector);
-				if (translation.innerHTML) {
-					let content =
-						translation.innerHTML[langRegion] ||
-						translation.innerHTML[lang];
-					if (content) {
-						el.innerHTML = content;
+				let elements = dom.querySelectorAll(translation.selector);
+				for (let el of elements) {
+					if (translation.innerHTML) {
+						let content =
+							translation.innerHTML[langRegion] ||
+							translation.innerHTML[lang];
+						if (content) {
+							el.innerHTML = content;
+						}
 					}
-				}
-				if (translation.attributes) {
-					for (let [key, language] of Object.entries(
-						translation.attributes
-					)) {
-						let value = language[langRegion] || language[lang];
-						if (value) {
-							el.setAttribute(key, value);
+					if (translation.attributes) {
+						for (let [key, language] of Object.entries(
+							translation.attributes
+						)) {
+							let value = language[langRegion] || language[lang];
+							if (value) {
+								el.setAttribute(key, value);
+							}
 						}
 					}
 				}
 			}
 		}
+		return dom;
 	}
 }
 

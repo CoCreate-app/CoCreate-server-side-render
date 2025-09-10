@@ -1,5 +1,5 @@
 const { parse } = require("node-html-parser");
-const { checkValue, ObjectId } = require("@cocreate/utils");
+const { checkValue, getRelativePath, ObjectId } = require("@cocreate/utils");
 const path = require("path");
 
 class CoCreateServerSideRender {
@@ -20,6 +20,8 @@ class CoCreateServerSideRender {
 
 		let dep = [];
 		let dbCache = new Map();
+		let organization_id = file.organization_id;
+		const host = file.urlObject.hostname;
 
 		async function render(dom, lastKey) {
 			// Handle elements with [array][key][object]
@@ -59,6 +61,7 @@ class CoCreateServerSideRender {
 				} else {
 					data = await self.crud.send({
 						method: "object.read",
+						host,
 						array,
 						object: { _id },
 						organization_id
@@ -97,24 +100,29 @@ class CoCreateServerSideRender {
 				let src = el.getAttribute("src");
 				if (!src) continue;
 
-				// Construct actual pathname using src and the original URL
-				let basePath = new URL(url).pathname;
-				let resolvedPathname = new URL(
-					src,
-					`http://localhost${basePath}`
-				).pathname;
+				let path =
+					el.getAttribute("path") || getRelativePath(file.path);
 
-				if (resolvedPathname.endsWith("/")) {
-					resolvedPathname += "index.html";
+				if (path) {
+					src = src.replaceAll(/\$relativePath\/?/g, path);
+				}
+
+				// Construct actual pathname using src and the original URL
+				let pathname = new URL(src, `http://localhost${file.path}`)
+					.pathname;
+
+				if (pathname.endsWith("/")) {
+					pathname += "index.html";
 				}
 				let $filter = {
 					query: {
-						pathname: resolvedPathname
+						pathname: pathname
 					}
 				}; // Use filter to structure query
 
 				let data = await self.crud.send({
 					method: "object.read",
+					host,
 					array: "files",
 					object: "",
 					$filter,
@@ -142,11 +150,16 @@ class CoCreateServerSideRender {
 						return ObjectId().toString(); // Return its string representation
 					});
 
-					chunk = await render(chunk);
+					// Parse chunk into DOM before recursive rendering
+					let chunkDom = parse(chunk);
+					chunkDom = await render(chunkDom);
 
 					el.setAttribute("rendered", "");
 					el.innerHTML = "";
-					el.appendChild(chunk);
+					// Append all child nodes of chunkDom to el
+					for (const child of chunkDom.childNodes) {
+						el.appendChild(child);
+					}
 				}
 			}
 
@@ -175,14 +188,6 @@ class CoCreateServerSideRender {
 		dep = [];
 		dbCache.clear();
 		return dom.toString();
-	}
-
-	getRelativePath(path) {
-		if (!path.endsWith("/")) {
-			path += "/";
-		}
-		let depth = path.split("/").filter(Boolean).length;
-		return depth > 0 ? "../".repeat(depth) : "./";
 	}
 
 	createLanguageLinkTags(file) {
@@ -229,8 +234,9 @@ class CoCreateServerSideRender {
 		let lang = file.lang;
 		if (file.translations && (langRegion || lang)) {
 			for (let translation of file.translations) {
-				let elements = dom.querySelectorAll(translation.selector);
+				let elements = dom.querySelectorAll(translation.selector) || [];
 				for (let el of elements) {
+					if (!el) continue;
 					if (translation.innerHTML) {
 						let content =
 							translation.innerHTML[langRegion] ||

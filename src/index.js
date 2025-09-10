@@ -7,7 +7,7 @@ class CoCreateServerSideRender {
 		this.crud = crud;
 	}
 
-	async HTML(file) {
+	async HTML(file, organization, urlObject, langRegion, lang) {
 		const self = this;
 		let ignoreElement = {
 			INPUT: true,
@@ -21,7 +21,7 @@ class CoCreateServerSideRender {
 		let dep = [];
 		let dbCache = new Map();
 		let organization_id = file.organization_id;
-		const host = file.urlObject.hostname;
+		const host = urlObject.hostname;
 
 		async function render(dom, lastKey) {
 			// Handle elements with [array][key][object]
@@ -168,12 +168,16 @@ class CoCreateServerSideRender {
 
 		let dom = parse(file.src);
 		dom = await render(dom, "root");
-		if (file.langRegion || file.lang) {
-			dom = await this.translate(dom, file);
+		if (langRegion || lang) {
+			dom = await this.translate(dom, file, langRegion, lang);
 		}
 
-		if (file.languages && file.languages.length > 0) {
-			let langLinkTags = this.createLanguageLinkTags(file);
+		if (organization.languages && organization.languages.length > 0) {
+			let langLinkTags = this.createLanguageLinkTags(
+				file,
+				organization,
+				urlObject
+			);
 			const head = dom.querySelector("head");
 			if (head && langLinkTags) {
 				const linksFragment = parse(langLinkTags);
@@ -186,26 +190,24 @@ class CoCreateServerSideRender {
 				}
 			}
 		}
-		
+
 		dep = [];
 		dbCache.clear();
 		return dom.toString();
-	};
+	}
 
-	createLanguageLinkTags(file) {
-		let generatedLinksString = `<link rel="alternate" hreflang="x-default" href="https://${file.urlObject.hostname}${file.pathname}">\n`;
+	createLanguageLinkTags(file, organization, urlObject) {
+		let generatedLinksString = `<link rel="alternate" hreflang="x-default" href="https://${urlObject.hostname}${file.pathname}">\n`;
 
-		for (const language of file.languages) {
+		for (const language of organization.languages) {
 			let langPath = `/${language}${file.pathname}`;
-			const hrefUrl = `https://${file.urlObject.hostname}${langPath}`;
+			const hrefUrl = `https://${urlObject.hostname}${langPath}`;
 			generatedLinksString += `<link rel="alternate" hreflang="${language}" href="${hrefUrl}">\n`;
 		}
 		return generatedLinksString;
 	}
 
-	async translate(dom, file) {
-		let langRegion = file.langRegion;
-		let lang = file.lang;
+	async translate(dom, file, langRegion, lang) {
 		if (file.translations && (langRegion || lang)) {
 			for (let translation of file.translations) {
 				let elements = dom.querySelectorAll(translation.selector) || [];
@@ -220,10 +222,11 @@ class CoCreateServerSideRender {
 						}
 					}
 					if (translation.attributes) {
-						for (let [key, language] of Object.entries(
+						for (let [key, languageObj] of Object.entries(
 							translation.attributes
 						)) {
-							let value = language[langRegion] || language[lang];
+							let value =
+								languageObj[langRegion] || languageObj[lang];
 							if (value) {
 								el.setAttribute(key, value);
 							}

@@ -88,6 +88,7 @@ class CoCreateServerSideRender {
 				dep.pop();
 			}
 
+			// ToDo: Fetch and render src, update relativePath. must have similar functionality to @cocreate/elements/fetch-src
 			// Handle elements with [src]
 			// for (let el of dom.querySelectorAll(
 			// 	"[src]:not(script, img, iframe, audio, video, source, track, input, embed, frame)"
@@ -144,6 +145,8 @@ class CoCreateServerSideRender {
 		dom = await render(dom, "root");
 		if (file.langRegion || file.lang) {
 			dom = await this.translate(dom, file);
+			// ToDo: Off by default. some attribute to activate language links. For performance use src to fetch a pre-rendered version
+			// <link rel="alternate" hreflang="x-default" href="https://example.com/en/index.html">
 			let langLinkTags = this.createLanguageLinkTags(file);
 			const head = dom.querySelector("head");
 			if (head && langLinkTags) {

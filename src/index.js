@@ -1,5 +1,6 @@
 const { parse } = require("node-html-parser");
-const { checkValue } = require("@cocreate/utils");
+const { checkValue, ObjectId } = require("@cocreate/utils");
+const path = require("path");
 
 class CoCreateServerSideRender {
 	constructor(crud) {
@@ -90,53 +91,64 @@ class CoCreateServerSideRender {
 
 			// ToDo: Fetch and render src, update relativePath. must have similar functionality to @cocreate/elements/fetch-src
 			// Handle elements with [src]
-			// for (let el of dom.querySelectorAll(
-			// 	"[src]:not(script, img, iframe, audio, video, source, track, input, embed, frame)"
-			// )) {
-			// 	let src = el.getAttribute("src");
-			// 	if (!src) continue;
+			for (let el of dom.querySelectorAll(
+				"[src]:not(script, img, iframe, audio, video, source, track, input, embed, frame)"
+			)) {
+				let src = el.getAttribute("src");
+				if (!src) continue;
 
-			// 	// Construct actual pathname using src and the original URL
-			// 	let basePath = new URL(url).pathname;
-			// 	let resolvedPathname = new URL(
-			// 		src,
-			// 		`http://localhost${basePath}`
-			// 	).pathname;
+				// Construct actual pathname using src and the original URL
+				let basePath = new URL(url).pathname;
+				let resolvedPathname = new URL(
+					src,
+					`http://localhost${basePath}`
+				).pathname;
 
-			// 	if (resolvedPathname.endsWith("/")) {
-			// 		resolvedPathname += "index.html";
-			// 	}
-			// 	let $filter = {
-			// 		query: {
-			// 			pathname: resolvedPathname
-			// 		}
-			// 	}; // Use filter to structure query
+				if (resolvedPathname.endsWith("/")) {
+					resolvedPathname += "index.html";
+				}
+				let $filter = {
+					query: {
+						pathname: resolvedPathname
+					}
+				}; // Use filter to structure query
 
-			// 	let data = await self.crud.send({
-			// 		method: "object.read",
-			// 		array: "files",
-			// 		object: "",
-			// 		$filter,
-			// 		organization_id
-			// 	});
+				let data = await self.crud.send({
+					method: "object.read",
+					array: "files",
+					object: "",
+					$filter,
+					organization_id
+				});
 
-			// 	if (
-			// 		data &&
-			// 		data.object &&
-			// 		data.object[0] &&
-			// 		data.object[0].src
-			// 	) {
-			// 		let chunk = data.object[0].src;
-			// 		let path = el.getAttribute("path");
-			// 		if (path) chunk = chunk.replaceAll("{{path}}", path);
+				if (
+					data &&
+					data.object &&
+					data.object[0] &&
+					data.object[0].src
+				) {
+					let chunk = data.object[0].src;
 
-			// 		chunk = await render(chunk);
+					// Replace $relativePath in the fetched chunk
+					let path =
+						el.getAttribute("path") || getRelativePath(file.path);
+					if (path) {
+						chunk = chunk.replaceAll(/\$relativePath\/?/g, path);
+					}
 
-			// 		el.setAttribute("rendered", "");
-			// 		el.innerHTML = "";
-			// 		el.appendChild(chunk);
-			// 	}
-			// }
+					// Replace ObjectId() with a new ObjectId
+					chunk = chunk.replaceAll("ObjectId()", () => {
+						// Generate a NEW ObjectId inside the function
+						return ObjectId().toString(); // Return its string representation
+					});
+
+					chunk = await render(chunk);
+
+					el.setAttribute("rendered", "");
+					el.innerHTML = "";
+					el.appendChild(chunk);
+				}
+			}
 
 			return dom;
 		}
@@ -145,22 +157,32 @@ class CoCreateServerSideRender {
 		dom = await render(dom, "root");
 		if (file.langRegion || file.lang) {
 			dom = await this.translate(dom, file);
-			// ToDo: Off by default. some attribute to activate language links. For performance use src to fetch a pre-rendered version
-			// <link rel="alternate" hreflang="x-default" href="https://example.com/en/index.html">
-			let langLinkTags = this.createLanguageLinkTags(file);
-			const head = dom.querySelector("head");
-			if (head && langLinkTags) {
-				const linksFragment = parse(
-					`<fragment>${langLinkTags}</fragment>`
-				);
-				for (const link of linksFragment.childNodes) {
-					head.appendChild(link);
+			// <link rel="alternate" hreflang="x-default" href="https://example.com/en/index.html" language-links>
+			let isLangLinkTags = dom.querySelector("[language-links]");
+			if (isLangLinkTags) {
+				let langLinkTags = this.createLanguageLinkTags(file);
+				const head = dom.querySelector("head");
+				if (head && langLinkTags) {
+					const linksFragment = parse(
+						`<fragment>${langLinkTags}</fragment>`
+					);
+					for (const link of linksFragment.childNodes) {
+						head.appendChild(link);
+					}
 				}
 			}
 		}
 		dep = [];
 		dbCache.clear();
 		return dom.toString();
+	}
+
+	getRelativePath(path) {
+		if (!path.endsWith("/")) {
+			path += "/";
+		}
+		let depth = path.split("/").filter(Boolean).length;
+		return depth > 0 ? "../".repeat(depth) : "./";
 	}
 
 	createLanguageLinkTags(file) {

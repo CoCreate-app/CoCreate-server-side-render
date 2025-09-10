@@ -170,61 +170,35 @@ class CoCreateServerSideRender {
 		dom = await render(dom, "root");
 		if (file.langRegion || file.lang) {
 			dom = await this.translate(dom, file);
-			// <link rel="alternate" hreflang="x-default" href="https://example.com/en/index.html" language-links>
-			let isLangLinkTags = dom.querySelector("[language-links]");
-			if (isLangLinkTags) {
-				let langLinkTags = this.createLanguageLinkTags(file);
-				const head = dom.querySelector("head");
-				if (head && langLinkTags) {
-					const linksFragment = parse(
-						`<fragment>${langLinkTags}</fragment>`
-					);
-					for (const link of linksFragment.childNodes) {
-						head.appendChild(link);
-					}
+		}
+
+		if (file.languages && file.languages.length > 0) {
+			let langLinkTags = this.createLanguageLinkTags(file);
+			const head = dom.querySelector("head");
+			if (head && langLinkTags) {
+				const linksFragment = parse(langLinkTags);
+				for (const link of linksFragment.querySelectorAll("link")) {
+					head.appendChild(link);
+				}
+				// Remove the fragment node from the DOM if it exists
+				if (linksFragment.parentNode) {
+					linksFragment.remove();
 				}
 			}
 		}
+		
 		dep = [];
 		dbCache.clear();
 		return dom.toString();
-	}
+	};
 
 	createLanguageLinkTags(file) {
-		let xDefault = file.path;
+		let generatedLinksString = `<link rel="alternate" hreflang="x-default" href="https://${file.urlObject.hostname}${file.pathname}">\n`;
 
-		if (file.name !== "index.html") {
-			if (xDefault.endsWith("/")) {
-				xDefault += file.name;
-			} else {
-				xDefault += "/" + file.name;
-			}
-		}
-		let generatedLinksString = `<link rel="alternate" hreflang="x-default" href="${xDefault}">\n`;
-
-		// Step 1: Create a lookup object that maps base language to its path.
-		// This is done once for efficiency.
-		const paths = {};
-		for (const p of file.pathname) {
-			const secondSlashIndex = p.indexOf("/", 1);
-			const langKey = p.substring(1, secondSlashIndex); // e.g., 'en', 'es', 'pt'
-			const restOfPath = p.substring(secondSlashIndex);
-			paths[langKey] = restOfPath;
-		}
-
-		// Step 2: Iterate through all supported languages and build the HTML string.
 		for (const language of file.languages) {
-			// Use the base language to find the correct path in our map
-			const path = paths[language] || paths[language.split("-")[0]];
-
-			// If a valid path exists, construct the full link
-			if (path) {
-				// Construct the full href URL using the full language code from the array
-				const hrefUrl = `https://${file.urlObject.hostname}/${language}${path}`;
-
-				// Append the HTML string. The hreflang and the URL path are now in sync.
-				generatedLinksString += `<link rel="alternate" hreflang="${language}" href="${hrefUrl}">\n`;
-			}
+			let langPath = `/${language}${file.pathname}`;
+			const hrefUrl = `https://${file.urlObject.hostname}${langPath}`;
+			generatedLinksString += `<link rel="alternate" hreflang="${language}" href="${hrefUrl}">\n`;
 		}
 		return generatedLinksString;
 	}

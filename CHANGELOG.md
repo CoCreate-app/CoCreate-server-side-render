@@ -1,3 +1,15 @@
+## [1.12.5](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.4...v1.12.5) (2025-10-08)
+
+
+### Bug Fixes
+
+* add TODO comments for fetching src and activating language links in HTML rendering ([0429a37](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/0429a37715c648c46989f351befb8c5f19f5e181))
+* enhance src handling and language link tag creation in HTML rendering ([1dc2bb6](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/1dc2bb6d9c4839d605b3ddd1cd4374f9b10bf3ba))
+* ensure proper context binding and improve translation logic in CoCreateServerSideRender ([74e5ab2](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/74e5ab22a68d1eec14dd6a2600f2a8363eefff16))
+* improve src handling and add getRelativePath utility in HTML rendering ([c8b17f8](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/c8b17f8b603808325393503c897bed94ff93e36f))
+* refactor language link tag creation and improve DOM manipulation in HTML rendering ([b860e08](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/b860e08be2c89ea60aac758d56e2599ed1aeec3a))
+* update HTML method to accept organization and language parameters for improved rendering ([515336e](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/515336ea7e7cc975a5e65f07d0f5166d7bc2d9e1))
+
 ## [1.12.4](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.3...v1.12.4) (2025-09-01)
 
 

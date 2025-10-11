@@ -1,3 +1,10 @@
+## [1.12.6](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.5...v1.12.6) (2025-10-11)
+
+
+### Bug Fixes
+
+* ensure pathname ends with a trailing slash for correct URL construction in HTML rendering ([5122e24](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/5122e2413a986ebe51cb4a48ab92387aad4b5727))
+
 ## [1.12.5](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.4...v1.12.5) (2025-10-08)
 
 

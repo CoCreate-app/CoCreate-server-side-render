@@ -107,8 +107,12 @@ class CoCreateServerSideRender {
 					src = src.replaceAll(/\$relativePath\/?/g, path);
 				}
 
+				let pathname = file.path
+				if (!pathname.endsWith("/")) {
+					pathname += "/";
+				}
 				// Construct actual pathname using src and the original URL
-				let pathname = new URL(src, `http://localhost${file.path}`)
+				pathname = new URL(src, `http://localhost${pathname}`)
 					.pathname;
 
 				if (pathname.endsWith("/")) {

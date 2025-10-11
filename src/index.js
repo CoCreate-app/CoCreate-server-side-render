@@ -7,7 +7,7 @@ class CoCreateServerSideRender {
 		this.crud = crud;
 	}
 
-	async HTML(file, organization, urlObject, langRegion, lang) {
+	async HTML(file, organization, urlObject, langRegion, lang, theme) {
 		const self = this;
 		let ignoreElement = {
 			INPUT: true,
@@ -174,6 +174,28 @@ class CoCreateServerSideRender {
 		dom = await render(dom, "root");
 		if (langRegion || lang) {
 			dom = await this.translate(dom, file, langRegion, lang);
+		}
+
+		// Inject preferred theme into the DOM so client gets server-rendered theme
+		if (theme) {
+			const htmlEl = dom.querySelector("html");
+			try {
+				if (htmlEl && htmlEl.setAttribute) htmlEl.setAttribute("data-bs-theme", theme);
+
+				const head = dom.querySelector("head");
+				if (head) {
+					// add or update color-scheme meta tag
+					let meta = head.querySelector('meta[name="color-scheme"]');
+					if (meta && meta.setAttribute) {
+						meta.setAttribute("content", theme);
+					} else {
+						const metaNode = parse(`<meta name="color-scheme" content="${theme}">`);
+						head.appendChild(metaNode);
+					}
+				}
+			} catch (e) {
+				// fail-safe: don't abort rendering if theme injection fails
+			}
 		}
 
 		if (organization.languages && organization.languages.length > 0) {

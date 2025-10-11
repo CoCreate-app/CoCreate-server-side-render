@@ -1,3 +1,10 @@
+## [1.12.7](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.6...v1.12.7) (2025-10-11)
+
+
+### Bug Fixes
+
+* add theme injection to HTML rendering for improved client-side styling ([e849c72](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/e849c72cf4112c8e6caa44187bca3fada5ff72cc))
+
 ## [1.12.6](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.5...v1.12.6) (2025-10-11)
 
 

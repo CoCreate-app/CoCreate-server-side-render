@@ -158,11 +158,24 @@ class CoCreateServerSideRender {
 					let chunkDom = parse(chunk);
 					chunkDom = await render(chunkDom);
 
-					el.setAttribute("rendered", "");
-					el.innerHTML = "";
-					// Append all child nodes of chunkDom to el
-					for (const child of chunkDom.childNodes) {
-						el.appendChild(child);
+					// If element requests outerHTML insertion, replace the element
+					// with the fetched chunk's content. Otherwise append children.
+					const valueType = el.getAttribute && el.getAttribute("value-type");
+					if (valueType === "outerHTML") {
+						// Replace the element with the parsed chunk's child nodes
+						// spread child nodes so we don't create an extra wrapper
+						if (chunkDom.childNodes && chunkDom.childNodes.length) {
+							el.replaceWith(...chunkDom.childNodes);
+						} else {
+							// If no child nodes, just remove the element
+							el.remove();
+						}
+					} else {
+						el.setAttribute("rendered", "");
+						el.innerHTML = "";
+						for (const child of chunkDom.childNodes) {
+							el.appendChild(child);
+						}
 					}
 				}
 			}

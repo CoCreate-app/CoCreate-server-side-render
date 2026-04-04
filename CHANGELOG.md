@@ -1,3 +1,11 @@
+## [1.12.8](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.7...v1.12.8) (2026-04-04)
+
+
+### Bug Fixes
+
+* enhance chunk rendering logic to support outerHTML insertion ([b605d4a](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/b605d4a775dd7dfb2493d8450f63022e553da5ee))
+* svg images not rendering in server-side rendering ([01a6882](https://github.com/CoCreate-app/CoCreate-server-side-render/commit/01a688296c369bf5ffe32c6b0fb8c8f38e70b243))
+
 ## [1.12.7](https://github.com/CoCreate-app/CoCreate-server-side-render/compare/v1.12.6...v1.12.7) (2025-10-11)
 
 

@@ -141,6 +141,10 @@ class CoCreateServerSideRender {
 				) {
 					let chunk = data.object[0].src;
 
+					if (typeof chunk === "string" && chunk.startsWith("data:image/svg+xml;base64,")) {
+						chunk = Buffer.from(chunk.split(",")[1], "base64").toString("utf-8");
+					}
+
 					// Replace $relativePath in the fetched chunk
 					let path =
 						el.getAttribute("path") || getRelativePath(file.path);
